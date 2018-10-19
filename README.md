@@ -1,7 +1,7 @@
 [![License](https://img.shields.io/github/license/vancefantasy/flyer-maker.svg)](https://github.com/vancefantasy/flyer-maker/blob/master/LICENSE)
 
 # flyermaker是什么?
-flyermaker是一个Java项目的脚手架工具，支持SpringBoot和SpringFramework，它允许动态生成工程代码和单元测试，同时尝试提工程搭建、个别场景实现的最佳实践参考，让开发人员在短时间构建易维护、生产可用的服务。
+flyermaker是一个Java项目的脚手架工具，支持SpringBoot和SpringFramework，它允许动态生成工程代码和单元测试，同时尝试提供工程搭建、个别场景实现的最佳实践参考，让开发人员在短时间构建易维护、生产可用的服务。
 flyermaker的灵感来自于[SPRING INITIALIZR](https://start.spring.io/)和[MyBatis Generator](https://github.com/mybatis/generator)。
 
 # 集成环境
