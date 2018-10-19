@@ -15,7 +15,7 @@ flyermaker的灵感来自于[SPRING INITIALIZR](https://start.spring.io/)和[MyB
 - 单元测试、Mock测试
 
 # flyermaker使用指南
-1. 下载flyermaker并解压
+1. 下载[最新版本](https://github.com/vancefantasy/flyer-maker/releases)并解压
 
         unzip flyermaker-0.0.1.zip //zip
         tar zxvf flyermaker-0.0.1.tar.gz //tar
