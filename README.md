@@ -16,7 +16,7 @@ flyermaker的灵感来自于[SPRING INITIALIZR](https://start.spring.io/)和[MyB
 
 # flyermaker使用指南
 
-> *注意*:flyermaker当前版本要求数据库表有自增主键，并且主键名必须为'id'
+> *注意*:<font color="#660000">flyermaker当前版本要求数据库表有自增主键，并且主键名必须为'id'</font><br /> 
 
 1. 下载[最新版本](https://github.com/vancefantasy/flyer-maker/releases)并解压
 
