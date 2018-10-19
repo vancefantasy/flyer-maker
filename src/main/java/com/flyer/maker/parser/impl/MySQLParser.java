@@ -7,6 +7,8 @@ import com.flyer.maker.parser.Parser;
 import com.flyer.maker.utils.DBUtil;
 import com.flyer.maker.utils.FormatUtil;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -19,6 +21,8 @@ import java.util.List;
  * MySQL parser
  */
 public class MySQLParser implements Parser {
+
+    private final Logger log = LoggerFactory.getLogger(MySQLParser.class);
 
     private final static String driverClass = "com.mysql.jdbc.Driver";
 
@@ -88,7 +92,14 @@ public class MySQLParser implements Parser {
             filed.setClassType(convertClass(rs.getString(2).toLowerCase()));
             filed.setDesc(rs.getString(3).toLowerCase());
 
-            filed.setMaxRandomLen(calMaxRandomLen(rs));
+            long len = 3;
+            try {
+                len = calMaxRandomLen(rs);
+            } catch (Exception e) {
+                log.error("table : {}, columnName : {} calMaxRandomLen error", tableName,
+                    columnName);
+            }
+            filed.setMaxRandomLen((int)len);
             filedList.add(filed);
         }
         return filedList;
@@ -139,11 +150,11 @@ public class MySQLParser implements Parser {
         return fieldType;
     }
 
-    private int calMaxRandomLen(ResultSet rs) throws SQLException {
-        int maxLen = 0;
+    private long calMaxRandomLen(ResultSet rs) throws SQLException {
+        long maxLen = 0;
         String fieldMaxLen = rs.getString(4);
         if (StringUtils.isNotBlank(fieldMaxLen)) {
-            maxLen = Integer.parseInt(fieldMaxLen) - rs.getString(1).length() - 1;
+            maxLen = Long.parseLong(fieldMaxLen) - rs.getString(1).length() - 1;
             if (maxLen > 0 && maxLen >= 20) {
                 maxLen = 20;
             }
