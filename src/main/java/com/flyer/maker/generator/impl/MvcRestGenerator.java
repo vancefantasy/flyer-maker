@@ -2,6 +2,7 @@ package com.flyer.maker.generator.impl;
 
 import com.flyer.maker.base.Config;
 import com.flyer.maker.utils.GU;
+import freemarker.template.TemplateException;
 
 import java.io.IOException;
 
@@ -11,7 +12,7 @@ import java.io.IOException;
 public class MvcRestGenerator extends BaseGenerator {
 
     @Override
-    public void makeCustom() throws IOException {
+    public void makeCustom() throws IOException, TemplateException {
         GU.f(concat(basePackageDir, "common", "listener", "LogbackProfileListener.java"),
             "LogbackProfileListener");
         generatorResources();
@@ -20,7 +21,7 @@ public class MvcRestGenerator extends BaseGenerator {
         GU.f(concat(webInfDir, "spring-servlet.xml"), concat(Config.projectType, "spring-servlet"));
     }
 
-    private void generatorResources() throws IOException {
+    private void generatorResources() throws IOException, TemplateException {
         GU.f(concat(resourcesDir, "base", "spring-bootstrap.xml"),
             concat(Config.projectType, "spring-bootstrap"));
         GU.f(concat(resourcesDir, "base", "spring-core.xml"),
@@ -50,7 +51,7 @@ public class MvcRestGenerator extends BaseGenerator {
             concat(Config.projectType, "prod_logback"));
     }
 
-    private void generatorTestResources() throws IOException {
+    private void generatorTestResources() throws IOException, TemplateException {
         GU.f(concat(testResourcesDir, "config.properties"),
             concat(Config.projectType, "unit_config.properties"));
         GU.f(concat(testResourcesDir, "logback-test.xml"),

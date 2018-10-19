@@ -1,5 +1,7 @@
 package com.flyer.maker.generator;
 
+import freemarker.template.TemplateException;
+
 import java.io.IOException;
 
 /**
@@ -9,9 +11,9 @@ public interface Generator {
 
     void init() throws IOException;
 
-    void generate() throws IOException;
+    void generate() throws IOException, TemplateException;
 
-    void base() throws IOException;
+    void base() throws IOException, TemplateException;
 
     void clearIfFail();
 

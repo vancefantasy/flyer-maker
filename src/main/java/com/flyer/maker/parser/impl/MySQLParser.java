@@ -75,7 +75,7 @@ public class MySQLParser implements Parser {
 
     private List<Field> getField(String database, String tableName) throws SQLException {
         String sql =
-            ("select column_name,data_type,column_comment,character_maximum_length from information_schema.columns where table_name = '"
+            ("select column_name,data_type,column_comment,character_maximum_length,extra from information_schema.columns where table_name = '"
                 + tableName + "'" + " and table_schema = '" + database + "'");
         Statement stmt = connection.createStatement();
         ResultSet rs = stmt.executeQuery(sql);
@@ -100,6 +100,7 @@ public class MySQLParser implements Parser {
                     columnName);
             }
             filed.setMaxRandomLen((int)len);
+            filed.setExtra(rs.getString(5).toLowerCase());
             filedList.add(filed);
         }
         return filedList;
@@ -109,12 +110,12 @@ public class MySQLParser implements Parser {
         List<Field> insertfiledList = new ArrayList<Field>();
         List<Field> classfiledList = new ArrayList<Field>();
         for (Field field : fieldList) {
-            if (!field.getTname().equals("id")) {
-                insertfiledList.add(field);
-            } else {
+            if (field.getTname().equals("id") || field.getExtra().equalsIgnoreCase("auto_increment")) {
                 clazz.setIdType(field.getClassType());
                 clazz.setIdTypeSimple(
                     "Integer".equals(field.getClassType()) ? "Int" : field.getClassType());
+            } else {
+                insertfiledList.add(field);
             }
             classfiledList.add(field);
         }
@@ -144,7 +145,7 @@ public class MySQLParser implements Parser {
         else if (fieldType.contains("time"))
             fieldType = "java.sql.Timestamp";
         else if (fieldType.contains("blob"))
-            fieldType = "java.sql.Blob";
+            fieldType = "byte[]";
         else
             fieldType = "String";
         return fieldType;

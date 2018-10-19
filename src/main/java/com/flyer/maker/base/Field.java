@@ -24,6 +24,12 @@ public class Field {
      * 字段描述
      */
     private String desc;
+
+    /**
+     * EXTRA
+     */
+    private String extra;
+
     /**
      * 字段最大长度
      */
@@ -67,6 +73,14 @@ public class Field {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    public String getExtra() {
+        return extra;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
     }
 
     public Integer getMaxRandomLen() {

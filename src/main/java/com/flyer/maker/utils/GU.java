@@ -2,6 +2,7 @@ package com.flyer.maker.utils;
 
 import com.flyer.maker.freemarker.FreemarkerConfig;
 import freemarker.template.Template;
+import freemarker.template.TemplateException;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -51,7 +52,7 @@ public class GU {
      * @param file target file path
      * @param templeteFile
      */
-    public static void f(String file, String templeteFile) {
+    public static void f(String file, String templeteFile) throws IOException, TemplateException {
         f(file, templeteFile, null);
     }
 
@@ -61,20 +62,17 @@ public class GU {
      * @param templeteFile freemarker template file
      * @param data
      */
-    public static void f(String file, String templeteFile, Map<String, Object> data) {
+    public static void f(String file, String templeteFile, Map<String, Object> data)
+        throws IOException, TemplateException {
         generateFile(templeteFile, file, data);
     }
 
     private static void generateFile(String templateFileName, String fileNamePath,
-        Map<String, Object> data) {
-        try {
+        Map<String, Object> data) throws IOException, TemplateException {
             FileUtils.forceMkdir(new File(fileNamePath).getParentFile());
             Template template = FreemarkerConfig.getConfiguration().getTemplate(templateFileName + ".ftl");
             Writer out = new OutputStreamWriter(new FileOutputStream(fileNamePath), "UTF-8");
             template.process(data, out);
             out.close();
-        } catch (Exception e) {
-            log.error("freemarker template.process error", e);
-        }
     }
 }

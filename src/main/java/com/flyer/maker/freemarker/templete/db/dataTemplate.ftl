@@ -58,6 +58,6 @@ public class ${clazz.bclassName}Data {
     <#elseif f.classType == "java.math.BigDecimal">new java.math.BigDecimal(String.valueOf(RandomUtil.nextDouble(200d)))
     <#elseif f.classType == "java.util.Date">new Date()
     <#elseif f.classType == "java.sql.Timestamp">new java.sql.Timestamp()
-    <#elseif f.classType == "java.sql.Clob">new java.sql.Clob()
+    <#elseif f.classType == "byte[]">RandomUtil.randomStringFixLength(10).getBytes()
     <#else>RandomUtil.randomStringFixLength(${f.maxRandomLen})</#if>
 </#macro>

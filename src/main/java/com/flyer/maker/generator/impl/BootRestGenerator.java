@@ -2,6 +2,9 @@ package com.flyer.maker.generator.impl;
 
 import com.flyer.maker.base.Config;
 import com.flyer.maker.utils.GU;
+import freemarker.template.TemplateException;
+
+import java.io.IOException;
 
 /**
  * springboot-rest生成器
@@ -9,7 +12,7 @@ import com.flyer.maker.utils.GU;
 public class BootRestGenerator extends BaseGenerator {
 
     @Override
-    public void makeCustom() {
+    public void makeCustom() throws IOException, TemplateException {
         GU.f(concat(basePackageDir, "App.java"), concat(Config.projectType, "App.java"));
         GU.f(concat(basePackageDir, "common", "WebMvcConfig.java"),
             concat(Config.projectType, "WebMvcConfig"));
@@ -17,14 +20,14 @@ public class BootRestGenerator extends BaseGenerator {
         generatorTestResources();
     }
 
-    private void generatorTestResources() {
+    private void generatorTestResources() throws IOException, TemplateException {
         GU.f(concat(testResourcesDir, "application.properties"),
             concat(Config.projectType, "unit_application.properties"));
         GU.f(concat(testResourcesDir, "logback-test.xml"),
             concat(Config.projectType, "logback-test"));
     }
 
-    private void generatorResources() {
+    private void generatorResources() throws IOException, TemplateException {
         GU.f(concat(resourcesDir, "application.properties"),
             concat(Config.projectType, "application.properties"));
         GU.f(concat(resourcesDir, "application-dev.properties"),

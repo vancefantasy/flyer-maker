@@ -39,13 +39,14 @@ public class App {
             }
             try {
                 generator.generate();
+                log.info("flyermaker completed in {} ms", System.currentTimeMillis() - begin);
+                log.info("target dir : {}", Config.targetDir);
             } catch (Exception e) {
                 log.error("generate error", e);
                 //失败时清理目录
                 generator.clearIfFail();
             }
-            log.info("flyermaker completed in {} ms", System.currentTimeMillis() - begin);
-            log.info("target dir : {}", Config.targetDir);
+
         }
     }
 

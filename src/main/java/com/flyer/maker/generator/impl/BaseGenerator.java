@@ -6,6 +6,7 @@ import com.flyer.maker.generator.Generator;
 import com.flyer.maker.parser.impl.MySQLParser;
 import com.flyer.maker.parser.Parser;
 import com.flyer.maker.utils.GU;
+import freemarker.template.TemplateException;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,17 +76,17 @@ public abstract class BaseGenerator implements Generator {
         }
     }
 
-    abstract void makeCustom() throws IOException;
+    abstract void makeCustom() throws IOException, TemplateException;
 
     @Override
-    public void generate() throws IOException {
+    public void generate() throws IOException, TemplateException {
         init();
         base();
         makeCustom();
     }
 
     @Override
-    public void base() throws IOException {
+    public void base() throws IOException, TemplateException {
         GU.f(concat(projectDir, ".gitignore"), "gitIgnore");
         GU.f(concat(projectDir, "pom.xml"), concat(Config.projectType, "pom"));
         generatorJava();
@@ -101,7 +102,7 @@ public abstract class BaseGenerator implements Generator {
         }
     }
 
-    private void generatorJava() throws IOException {
+    private void generatorJava() throws IOException, TemplateException {
 
         GU.f(concat(basePackageDir, "common", "BaseController.java"), "BaseController");
 
@@ -132,7 +133,7 @@ public abstract class BaseGenerator implements Generator {
         generatorByClazzList();
     }
 
-    private void generatorTestJava() throws IOException {
+    private void generatorTestJava() throws IOException, TemplateException {
         GU.f(concat(testBasePackageDir, "common", "BeanFactoryRegisterTest.java"),
             "BeanFactoryRegisterTest");
 
@@ -148,7 +149,7 @@ public abstract class BaseGenerator implements Generator {
             concat(Config.projectType, "AbstractMVCTest"));
     }
 
-    private void generatorByClazzList() {
+    private void generatorByClazzList() throws IOException, TemplateException {
         for (Clazz clazz : clazzList) {
             Map<String, Object> data = new HashMap<>();
             data.put("clazz", clazz);

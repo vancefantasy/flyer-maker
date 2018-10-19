@@ -35,7 +35,9 @@ public class DBUtils {
             connection = dataSource.getConnection();
             String db = connection.getCatalog();
             if (!db.endsWith("_ut")) {
-                throw new RuntimeException("单元测试数据库名称必须以{ _ut }结尾，当前库: " + db);
+                log.error("单元测试数据库名称必须以{ _ut }结尾，当前库: {}", db);
+                log.error("单元测试退出");
+                System.exit(100);
             }
             log.info("unit test currnt db: {}", db);
         } catch (Exception e) {
