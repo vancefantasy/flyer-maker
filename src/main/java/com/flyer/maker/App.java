@@ -46,8 +46,6 @@ public class App {
             }
             log.info("flyermaker completed in {} ms", System.currentTimeMillis() - begin);
             log.info("target dir : {}", Config.targetDir);
-        }else {
-            log.error("config error, exit");
         }
     }
 
