@@ -15,8 +15,18 @@ flyermaker的灵感来自于[SPRING INITIALIZR](https://start.spring.io/)和[MyB
 - 单元测试、Mock测试
 
 # flyermaker使用指南
+1. 下载flyermaker并解压
 
-    flyermaker -f application.properties
+        unzip flyermaker-0.0.1.zip //zip
+        tar zxvf flyermaker-0.0.1.tar.gz //tar
+
+2. 修改配置文件
+
+    编辑application.properties文件
+
+2. 命令行运行
+
+        flyermaker -f application.properties
 
 ### 配置文件参考
 
@@ -46,6 +56,10 @@ mysql.column.exclude       |字段黑名单|否        |''|
 
 写好单元测试不是一件容易的事，这里分享下自己的经验：多数情况下使用独立的数据库运行单元测试，运行完清空数据库，会是一个明智的选择。事实上，在本项目中，就体现了类似的规则。
 注意：为避免误清空其他环境数据，运行单元测试时会检测数据库实例是否以'_ut'结尾。
+
+# 模板项目
+- [flyer-springboot-rest](https://github.com/vancefantasy/flyer-springboot-rest)
+- [flyer-springmvc-rest](https://github.com/vancefantasy/flyer-springmvc-rest)
 
 # 贡献代码
 
