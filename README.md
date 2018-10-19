@@ -15,6 +15,9 @@ flyermaker的灵感来自于[SPRING INITIALIZR](https://start.spring.io/)和[MyB
 - 单元测试、Mock测试
 
 # flyermaker使用指南
+
+> *注意*:flyermaker当前版本要求数据库表有自增主键，并且主键名必须为'id'
+
 1. 下载[最新版本](https://github.com/vancefantasy/flyer-maker/releases)并解压
 
         unzip flyermaker-0.0.1.zip //zip
@@ -24,7 +27,7 @@ flyermaker的灵感来自于[SPRING INITIALIZR](https://start.spring.io/)和[MyB
 
     编辑application.properties文件
 
-2. 命令行运行
+3. 命令行运行
 
         flyermaker -f application.properties
 
@@ -45,12 +48,16 @@ mysql.table.include       |表白名单|否        |''|
 mysql.table.exclude       |表黑名单|否        |''|
 mysql.column.exclude       |字段黑名单|否        |''|
 
-### project.type
+### 关于项目类型
 
 - **springmvc-rest** 基于SpringFramework的Rest服务
 - **springboot-rest** 基于SpringBoot的Rest服务
 - **springmvc-page** 基于SpringFramework的页面服务，暂不支持
 - **springboot-page** 基于SpringBoot的页面服务，暂不支持
+
+### 关于白名单、黑名单
+白名单和黑名单是互斥的，白名单的优先级高于黑名单。即：如果设置了白名单，只会扫描白名单的表，如果只设置了黑名单，则会过滤掉黑名单中的表，如果同时设置了白名单、黑名单，则只有白名单生效。
+字段黑名单是全局的，用来过滤不想要的字段，例如'_timestamp(ON UPDATE CURRENT_TIMESTAMP)'
 
 # 单元测试
 
