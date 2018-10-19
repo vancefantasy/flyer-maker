@@ -33,7 +33,7 @@ flyermaker的灵感来自于[SPRING INITIALIZR](https://start.spring.io/)和[MyB
 
 ### 配置文件参考
 
-字段       |名称|是否必须   |默认值  |备注
+字段       |名称       |是否必须   |默认值  |备注
 ----------|----------|-------|-----------|-----------
 author       |作者|否        |'flyermaker'|
 target.dir       |目标目录|否        |当前目录|
