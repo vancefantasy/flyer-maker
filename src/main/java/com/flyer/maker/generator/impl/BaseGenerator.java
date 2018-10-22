@@ -64,12 +64,12 @@ public abstract class BaseGenerator implements Generator {
         } catch (Exception e) {
             log.error("parser error", e);
         }
-
+        //clear target dir
         File file = new File(projectDir);
         if (file.exists()) {
             FileUtils.forceDelete(file);
             try {
-                Thread.sleep(100);
+                Thread.sleep(50);
             } catch (InterruptedException e) {
             }
             log.debug("clean dir: {}", projectDir);

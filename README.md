@@ -35,18 +35,18 @@ flyermaker的灵感来自于[SPRING INITIALIZR](https://start.spring.io/)和[MyB
 
 字段       |名称       |是否必须   |默认值  |备注
 ----------|----------|-------|-----------|-----------
-author       |作者|否        |'flyermaker'|
-target.dir       |目标目录|否        |当前目录|
+author       |作者|否        |flyermaker|例如：vance
+target.dir       |目标目录|否        |当前目录|例如：/tmp/flyermaker
 project.type       |项目类型|是        |-|可选springmvc-rest,springboot-rest,springmvc-page,springboot-page
-project.groupId       |Maven groupId|是        |-|
-project.artifactId       |Maven artifactId|是        |-|
-project.package       |包路径|是        |-|
-mysql.jdbc.url       |jdbc url|是        |-|
-mysql.username       |mysql username|是        |-|
-mysql.password       |mysql password|是        |-|
-mysql.table.include       |表白名单|否        |''|
-mysql.table.exclude       |表黑名单|否        |''|
-mysql.column.exclude       |字段黑名单|否        |''|
+project.groupId       |Maven groupId|是        |-|例如:com.flyer
+project.artifactId       |Maven artifactId|是        |-|例如：flyer-springboot-rest
+project.package       |包路径|是        |-|例如：com.flyer.springmvc.rest
+mysql.jdbc.url       |jdbc url|是        |-|例如：jdbc:mysql://localhost:3306/flyer?useUnicode=true&characterEncoding=utf-8&useSSL=false
+mysql.username       |mysql username|是        |-|例如：flyer_w
+mysql.password       |mysql password|是        |-|例如：123456
+mysql.table.include       |表白名单|否        |空|例如：user,order,t2
+mysql.table.exclude       |表黑名单|否        |空|例如：user,order,t2
+mysql.column.exclude       |字段黑名单|否        |空|例如:_timestamp,updatetime
 
 ### 关于项目类型
 
