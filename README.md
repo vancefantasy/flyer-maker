@@ -65,6 +65,7 @@ mysql.column.exclude       |字段黑名单|否        |空|例如:_timestamp,up
 >注意：为避免误清空其他环境数据，运行单元测试时会检测数据库实例是否以'_ut'结尾。生成代码后，请把单元测试的配置文件修改下。
 
 # 模板项目
+这里维护了flyermaker的模板：
 - [flyer-springboot-rest](https://github.com/vancefantasy/flyer-springboot-rest)
 - [flyer-springmvc-rest](https://github.com/vancefantasy/flyer-springmvc-rest)
 
