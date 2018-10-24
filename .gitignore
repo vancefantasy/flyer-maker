@@ -1,6 +1,3 @@
-/target/
-!.mvn/wrapper/maven-wrapper.jar
-
 ### STS ###
 .apt_generated
 .classpath
@@ -11,7 +8,7 @@
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -24,3 +21,19 @@ dependency-reduced-pom.xml
 /dist/
 /nbdist/
 /.nb-gradle/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Others
+target/
+logs/
+
+# Package Files
+*.jar
+*.war
+*.ear
+*.DS_Store
+*.class
